@@ -1,0 +1,125 @@
+﻿title: Cat
+---
+<<if $talked_to_goblin == false>>
+    <<play_dialogue Cat>>
+    Cat: This music's okay but I can't dance to it! Do you like it?
+    -> I do not possess the ability to like "music".
+    <<stop>>
+<<elseif $talked_to_cat == false>>
+    <<play_dialogue Cat>>
+    Cat: Whoa careful, back up, my sweet dance moves might knock you sideways, guy.
+    ->Are you enjoying dancing alone or would you prefer a partner?
+        <<play_dialogue Cat>>
+        Cat: Ummmm very sweet of you but you aren't my type… I kind of like someone else.
+        -> Not me. I do not possess such capacities for yearning and crushes… I was referring to Goblin boy.
+            <<set $talked_to_cat = true>>
+            <<play_dialogue Cat>>
+            Cat: You're really committing to the alien costume, huh? Wait, did you say Goblin boy?? As in Andy, HOT ANDY?!
+            ->Yes he wants to dance with you. I could feel his internal organs… well never mind. He likes you is what I mean.
+                <<play_dialogue Cat>>
+                Cat: Well gosh that makes me nervous. I need another drink! Can you get me one from the kitchen? Lisa, er, sorry, “the witch” is bartending.
+        -> That's not what I meant. Would you like to dance with Goblin boy?
+            <<set $talked_to_cat = true>>
+            <<play_dialogue Cat>>
+            Cat: You mean Andy? Why, did he say he wanted to?!
+            -> Yes. He likes you. You like him. This is silly human nonsense.
+                <<play_dialogue Cat>>
+                Cat: Well gosh that makes me nervous. I need another drink! Can you get me one from the kitchen? Lisa, er, sorry, “the witch” is bartending.
+                <<stop>>
+    ->Would you like to dance with the Goblin boy?
+        <<set $talked_to_cat = true>>
+        <<play_dialogue Cat>>
+        Cat: You mean Andy? Why, did he say he wanted to?!
+        ->Yes. He likes you. You like him. This is silly human nonsense.
+            <<play_dialogue Cat>>
+            Cat: Well gosh that makes me nervous. I need another drink! Can you get me one from the kitchen? Lisa, er, sorry, “the witch” is bartending.
+            <<stop>>
+    ->I can bust moves so good you'll have to call a repair man.
+        <<play_dialogue Cat>>
+        Cat: Okay. That's a weird thing to say.
+        <<stop>>
+<<elseif $talked_to_cat == true && $has_brew == false>>
+    <<play_dialogue Cat>>
+    Cat: Where's my drink?
+    <<stop>>
+
+<<elseif $talked_to_cat == true && $has_brew == true && $brew_given == false>>
+    <<play_dialogue Cat>>
+    Cat: Hey my drink! Thank you!
+    -> Will you now make dance moves with Goblin boy?
+        <<play_dialogue Cat>>
+        Cat: Well, I really want to. But we can't dance to this music! I saw a VINYL RECORD in the Bookshelf! Gimme something I can move to!
+        <<set $brew_given = true>>  
+        <<set $knows_vinyl_location = true>>
+        <<stop>>
+    -> Will you dance now with Goblin?
+        <<set $brew_given = true>> 
+        <<set $knows_vinyl_location = true>>
+        <<play_dialogue Cat>>
+        Cat: Well, I really want to. But we can't dance to this music! I saw a VINYL RECORD in the Bookshelf! Gimme something I can move to! 
+        <<stop>>
+    -> You will now dance with Goblin.
+        <<play_dialogue Cat>>
+        Cat: Uh… you're rude, no. 
+        <<stop>>
+
+<<elseif $brew_given == true && $knows_vinyl_location == true && $has_vinyl_record == false>>
+    <<play_dialogue Cat>>
+    Cat: Go find a way to change the music, please and thank you!
+<<stop>>
+
+<<elseif $vinyl_playing == false && $has_vinyl_record == true>>
+    <<play_dialogue Cat>>
+    Cat: You have it! Give it to the Ghost DJ so we can dance!
+<<stop>>
+
+<<elseif $brew_given == true && $vinyl_playing == true && $cat_ready_to_dance == false>>
+    <<play_dialogue Cat>>
+    Cat: This is my favourite song! Thanks for putting this on!
+    -> You're welcome… huh, I've never said that before. I suppose no one ever thanked me for anything… I suppose I've never done anything for anyone… what is this strange feeling?
+        <<play_dialogue Cat>>
+        Cat: We're buds now, that's the strange feeling, bud. Now go tell Andy I'm ready to dance! And that I'm in love with hi- you know what I'll tell him that part myself.
+        <<set $cat_ready_to_dance = true>>
+        <<stop>>
+    -> Will you now dance with the Goblin boy?
+        <<play_dialogue Cat>>
+        Cat: Get that foxy hunk over here, time I tell him how I really feel! While also busting sick dance moves.
+        <<set $cat_ready_to_dance = true>>
+        <<stop>>
+    -> I do not need to be thanked. I am on a mission. I do not care for thank you.
+        <<play_dialogue Cat>>
+        Cat: Kay, rude. I don't wanna dance anymore.
+        <<stop>>
+<<elseif $cat_ready_to_dance == true && $goblin_needs_moves == false>>
+    <<play_dialogue Cat>>
+    Cat: Go get Hot Goblin Andy for me!
+    <<stop>>
+
+<<elseif $goblin_needs_moves == true && $learned_dance_moves == false>>
+    <<play_dialogue Cat>>
+    Cat: Hey bud! Where's Andy? Did he change his mind…
+    -> No buddy! Don't worry, he still really wants to dance with you! He's just nervous and needs some dance moves… wait do I care? And did I just call you buddy?
+        <<play_dialogue Cat>>
+        Cat: Okay, how about this one. LEFT, RIGHT, STEP, JUMP, LEFT.
+        <<set $learned_dance_moves = true>>
+        <<stop>>
+    -> I need you to teach me some dance moves to give to him.
+        <<play_dialogue Cat>>
+        Cat: Okay, how about this one. LEFT, RIGHT, STEP, JUMP, LEFT.
+        <<set $learned_dance_moves = true>>
+        <<stop>>
+    -> I shall no longer be involved in silly human mating ritual.
+        <<play_dialogue Cat>>
+        Cat: Okay, you're weird and gross. Bye!
+        <<stop>>
+
+<<elseif $learned_dance_moves == true && $cat_goblin_dancing == false>>
+    <<play_dialogue Cat>>
+    Cat: Go get Hot Goblin Andy already!
+<<stop>>
+<<else>>
+    <<play_dialogue Cat>>
+    Cat: Thanks for all your help!
+    <<stop>>
+<<endif>>
+===

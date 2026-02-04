@@ -1,0 +1,112 @@
+﻿title: Goblin
+position: -172,-222
+--- 
+<<if $talked_to_goblin == false && $go_talk_to_cat == false || $talked_to_goblin == true && $go_talk_to_cat == false >>
+    <<set $talked_to_goblin = true>>
+    <<play_dialogue Goblin>>
+    Goblin: I've been waiting for the bathroom for like a million years. Hey alien dude, what's up?
+
+    -> I'm looking for my brother, I was told you have the guest list?
+        <<play_dialogue Goblin>>
+        Goblin: Yeah but I'm not just gonna GIVE it to you, you gotta do something for me.
+        -> What do you want?
+            <<play_dialogue Goblin>>
+            Goblin: I want to dance with black cat but I'm too nervous. She's so cool! Would you talk to her for me?
+            -> Why don't you just ask her?
+                <<play_dialogue Goblin>>
+                Goblin: What if she doesn't like me back? What if she laughs in my face? What if I get so nervous I burp and then barf?!
+                -> Okay, okay, I'll go ask her.
+                    <<set $go_talk_to_cat = true>>
+                    <<stop>>
+            -> If she agrees to dance with you will you give me the guest list?
+                <<play_dialogue Goblin>>
+                Goblin: Well, only if she actually WANTS TO, but yeah, if you helped me out, I'll give you the guest list!
+                <<set $go_talk_to_cat = true>>
+                <<stop>>
+        -> No thanks.
+            <<stop>>
+    -> Why are you standing by yourself?
+        <<play_dialogue Goblin>>
+        Goblin: I'm trying to work up the courage to ask Black Cat girl to dance.
+        -> Why don't you just ask her?
+            <<play_dialogue Goblin>>
+            Goblin: What if she doesn't like me back? What if she laughs in my face? What if I get so nervous I burp and then barf?!
+            -> Okay, okay, I'll go ask her.
+                <<set $go_talk_to_cat = true>>
+                <<stop>>
+        -> If she agrees to dance with you will you give me the guest list?
+            <<play_dialogue Goblin>>
+            Goblin: Well, only if she actually WANTS TO, but yeah, if you helped me out, I'll give you the guest list!
+            <<set $go_talk_to_cat = true>>
+            <<stop>>
+        -> No thanks.
+            <<stop>>
+    -> Nothing. Goodbye
+        <<stop>>
+<<elseif $cat_ready_to_dance == false && $go_talk_to_cat == true>>
+    <<play_dialogue Goblin>>
+    Goblin: What are you waiting for, go talk to Black Cat...
+    <<stop>>
+
+<<elseif $cat_ready_to_dance == true && $goblin_needs_moves == false>>
+    <<play_dialogue Goblin>>
+    Goblin: Hey Alien bro, been a minute. And yet here I am, still waiting for the bathroom! What's up?
+
+    -> Feline costume wishes to commence dancing with you. Now give me the guest list.
+        <<play_dialogue Goblin>>
+        Goblin: What?? But I don't know how to dance! You gotta go find me some dance moves. Then I'll give you the guest list.
+        <<set $goblin_needs_moves = true>>
+        <<stop>>
+
+    -> Give me the guest list or perish!
+        <<play_dialogue Goblin>>
+        Goblin: No thanks.
+        <<stop>>
+
+<<elseif $goblin_needs_moves == true && $learned_dance_moves == false>>
+    <<play_dialogue Goblin>>
+    Goblin: Did you find me any dance moves?
+    <<stop>>
+
+<<elseif $learned_dance_moves == true && $cat_goblin_dancing == false>>
+    <<play_dialogue Goblin>>
+    Goblin: Did you find me some moves?
+
+    -> Yes, but I don't know if I can remember.
+        <<jump Goblin_MovesOptions>>
+
+    -> I don't think you need dance moves. You just need confidence and to ask her to dance.
+        <<play_dialogue Goblin>>
+        Goblin: I think moves are more helpful. Come back when you have some.
+        <<stop>>
+
+    -> No, I don't care about your “moves”.
+        <<stop>>
+
+<<else>>
+    <<play_dialogue Goblin>>
+    Goblin: Thanks for all your help!
+    <<stop>>
+<<endif>>
+===
+
+title: Goblin_MovesOptions
+---
+<<play_dialogue Goblin>>
+Goblin: How does it go?
+-> RIGHT, JUMP, LEFT, STEP, LEFT.
+    <<play_dialogue Goblin>>
+    Goblin: Uh… that doesn't seem right, you got no rhythm. I don't think that will impress her.
+    <<jump Goblin_MovesOptions>>
+-> LEFT, RIGHT, STEP, JUMP, LEFT.
+    <<play_dialogue Goblin>>
+    Goblin: Whoa nelly! Where'd you learn moves like that! Okay, I'm ready to go get the love of my life! Oh and here's your guest list.
+    <<set $has_guest_list = true>>
+    <<set $cat_goblin_dancing = true>>
+    <<move_cat_and_goblin>>
+    <<stop>>
+-> LEFT, STEP, LEFT, JUMP, RIGHT.
+    <<play_dialogue Goblin>>
+    Goblin: Uh… that doesn't seem right, you got no rhythm. I don't think that will impress her.
+    <<jump Goblin_MovesOptions>>
+===

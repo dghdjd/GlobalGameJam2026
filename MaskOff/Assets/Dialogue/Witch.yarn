@@ -1,0 +1,57 @@
+﻿title: Witch
+---
+
+<<if $talked_to_witch == false && $talked_to_cat == false || $talked_to_witch == true && $talked_to_cat == false >>
+    <<play_dialogue Witch>>
+    Witch: Double Double, toils and trouble! LIMES are missing, hence it won't bubble!
+    <<set $talked_to_witch = true>>
+    <<stop>>
+<<endif>>
+
+<<if $talked_to_witch == false && $talked_to_cat == true && $looking_for_lime == false || $talked_to_witch == true && $talked_to_cat == true && $looking_for_lime == false>>
+    <<play_dialogue Witch>>
+    Witch: Hey! Are you just going to stare at our cauldron? What can I get for ya? Want some of my spellbinding Halloween Punch?
+    -> I need a BREW for the Black Cat if you don't mind.
+        <<play_dialogue Witch>>
+        Witch: A BREW for the Black Cat? Sure - it's almost done but Franky over here lost the LIME. Ask him where it may be.
+        <<set $talked_to_witch = true>>
+        <<set $talk_to_franky = true>>
+        <<stop>>
+    -> Nothing. Continue with your alchemy.
+        <<play_dialogue Witch>>
+        Witch: Well come back any time for a BREW or two.
+        <<set $talked_to_witch = true>>
+        <<stop>>
+<<endif>>
+
+<<if $talk_to_franky == true && $talked_to_witch == true && $have_lime == false>>
+    <<play_dialogue Witch>>
+    Witch: Talk to Franky to find the LIME, he seems to have misplaced it again.
+<<endif>>
+
+<<if $have_lime == true && $has_brew == false>>
+    -> (Give LIME to Witch) Hey. Here is the lime you were looking for.
+        <<play_dialogue Witch>>
+        Witch: You found it! Perfect. Here — one Witch's BREW, extra tangy. Don't drink it too fast. Enjoy!
+        <<set $has_brew = true>>
+        <<stop>>
+    -> (Don't Give LIME to Witch)
+        <<stop>>
+<<endif>>
+
+<<if $has_brew == true && $brew_given == false>>
+    <<play_dialogue Witch>>
+    Witch: Enjoy your BREW! Don't drink it too fast!
+<<endif>>
+
+<<if $brew_given == true && $cat_goblin_dancing == false>>
+    <<play_dialogue Witch>>
+    Witch: I hope the BREW was not too strong!
+<<endif>>
+
+<<if $cat_goblin_dancing == true>>
+    <<play_dialogue Witch>>
+    Witch: You saved the party Alien! And thanks for giving Franky a helping hand.
+<<endif>>
+
+===

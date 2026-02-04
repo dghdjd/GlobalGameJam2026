@@ -1,0 +1,48 @@
+﻿title: Frankenstein
+---
+<<if $talked_to_frankenstein == false && $talk_to_franky == false>>
+    <<play_dialogue Franky>>
+    Frankenstein: I swear I had the LIME a minute ago. Why am I always misplacing LIMES?
+    <<set $talked_to_frankenstein = true>>  
+<<endif>>
+
+<<if $talked_to_frankenstein == false && $talked_to_witch == true && $talk_to_franky == true && $looking_for_lime == false || $talked_to_frankenstein == true && $talked_to_witch == true && $talk_to_franky == true && $looking_for_lime == false>>
+    <<play_dialogue Franky>>
+    Frankenstein: I heard what my Witch friend said, but I didn't lose it okay... Maybe it's in the fridge? Could be behind the… questionable potato salad. Why don't you take a look with your fresh eyes?”
+    -> Humans are silly, I would never misplace this item known as lime. But I suppose I will look for it.
+        <<set $talked_to_frankenstein = true>>
+        <<set $looking_for_lime = true>>
+        <<stop>>
+    -> Okay. I hope the LIME will be found soon...
+        <<set $talked_to_frankenstein = true>>
+        <<set $looking_for_lime = true>>
+        <<stop>>
+<<endif>>
+
+<<if $looking_for_lime == true && $have_lime == false>>
+    <<play_dialogue Franky>>
+    Frankenstein: Have you seen that LIME yet?
+<<endif>>
+
+<<if $have_lime == true && $has_brew == false>>
+    -> (Give LIME to Frankenstein) Hey. Give this to the Witch. *Wink* It was in the fridge just like you said it might be.
+        <<play_dialogue Franky>>
+        Frankenstein: See, WITCH, I told you it was in the fridge! Now let's concoct this cool Alien a BREW for Black Cat.
+        <<play_dialogue Franky>>
+        Frankenstein: (Hands you the BREW) Thanks Alien. I owe you one.
+        <<set $has_brew = true>>
+        <<stop>>
+    -> (Don't Give LIME to Frankenstein)
+        <<stop>>
+<<endif>>
+
+<<if $has_brew == true && $brew_given == false>>
+    <<play_dialogue Franky>>
+    Frankenstein: Hope Black Cat enjoys the BREW!
+<<endif>>
+
+<<if $brew_given == true>>
+    <<play_dialogue Franky>>
+    Frankenstein: Thanks again, Alien. Not sure if I said it before, but I'll say it again: I owe you one.
+<<endif>>
+===

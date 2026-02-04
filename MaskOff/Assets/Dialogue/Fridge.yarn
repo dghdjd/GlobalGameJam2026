@@ -1,0 +1,14 @@
+﻿title: Fridge
+---
+<<if $looking_for_lime == false && $talked_to_cat == false>>
+    Fridge: Just mouldy human food and further alcohol beverages... 
+<<elseif $looking_for_lime == false && $talked_to_cat == true>>
+    Fridge: Just mouldy human food and further alcohol beverages... but none fit Black Cat's description...
+<<elseif $looking_for_lime == true>>
+    Fridge: The LIME is hidden behind this disgusting smelling "potato salad"... I think I like it. (Picked up LIME)
+    <<set $have_lime = true>>
+    <<stop>>
+<<elseif $have_lime == true>>
+    Fridge: Some of this food is... pleasing to my nose orifice.
+<<endif>>
+===

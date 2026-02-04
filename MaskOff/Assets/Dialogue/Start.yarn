@@ -1,0 +1,40 @@
+﻿title: Start
+---
+<<declare $talked_to_pumpkin = false>>
+<<declare $talked_to_cat = false>>
+<<declare $talked_to_goblin = false>>
+<<declare $talked_to_ghost = false>>
+<<declare $talked_to_frankenstein = false>>
+<<declare $talked_to_witch = false>>
+<<declare $has_guest_list = false>>
+<<declare $has_vinyl_record = false>>
+<<declare $vinyl_playing = false>>
+<<declare $found_brother = false>>
+<<declare $know_brother_is_ghost = false>>
+<<declare $knows_vinyl_location = false>>
+<<declare $cat_goblin_dancing = false>>
+<<declare $has_brew = false>>
+<<declare $have_lime = false>>
+<<declare $talk_to_franky = false>>
+<<declare $looking_for_lime = false>>
+<<declare $brew_given = false>>
+<<declare $cat_requested_brew = false>>
+<<declare $cat_requested_music_change = false>>
+<<declare $cat_ready_to_dance = false>>
+<<declare $go_talk_to_cat = false>>
+<<declare $goblin_needs_moves = false>>
+<<declare $learned_dance_moves = false>>
+<<declare $taught_goblin_moves = false>>
+<<play_dialogue Alien>>
+Neil-A: I received a signal on my way to Earth-748.
+<<play_dialogue Alien>> 
+Neil-A: “Citizen known as Neil-A, you are tasked with the return of your sibling Al-X. You've been to earth before so as the earthlings say “no biggie”. However, this evening is a crude ritual known as “Halloween”. All Earthlings shall be donning disguises. Your alias shall be GUY “DRESSED” AS AN “ALIEN”.
+<<play_dialogue Alien>>
+Neil-A: Al-X was last seen in an unidentified “costume” entering what is known as a “house party”. Our human intelligence agent tells us it could be a real “banger”. 
+<<play_dialogue Alien>>
+Neil-A: Track down your brother, bring him home before he shares any of our intergalactic secrets! You have until the sun shines upon the residence or neither of you shall return home… whatever happened between you two, SORT IT OUT!”
+<<play_dialogue Alien>>
+Neil-A: I need to talk to these earthlings and find my brother before sunrise!
+-> Let's do this!
+    <<change_scene MainGame>>
+===

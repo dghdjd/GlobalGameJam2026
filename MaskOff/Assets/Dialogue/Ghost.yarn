@@ -1,0 +1,69 @@
+﻿title: Ghost
+---
+<<if $has_vinyl_record == false>>
+    <<play_dialogue Ghost>>
+    Ghost: Hey! The GUEST LIST? I don't have it… check with GOBLIN. Man, this music needs changing. // Add in case havent talked to before
+    <<set $talked_to_ghost = true>>
+    <<stop>>
+<<endif>>
+
+<<if $has_vinyl_record == false && $knows_vinyl_location == false>>
+    <<play_dialogue Ghost>>
+    Ghost: Still looking for that GUEST LIST? I still need help with the music...
+<<endif>>
+
+<<if $has_vinyl_record == false && $knows_vinyl_location == true>>
+    <<play_dialogue Ghost>>
+    Ghost: Hey did I hear Cat someone mention a VINYL RECORD?
+<<endif>>
+
+<<if $has_vinyl_record == true && $vinyl_playing == false>>
+    <<play_dialogue Ghost>>
+    Ghost: Hey! The GUEST LIST? I don't have it… but the music needs changing.
+    -> Is this the album you were looking for?
+        <<play_dialogue Ghost>>
+        Ghost: …You found it! Been looking for this for ages! Thank you. This party is about to go INTERGALACTICAL!
+        <<play_dialogue Ghost>>
+        Ghost: (Ghost plays a new track — upbeat, cosmic sounds.)
+        <<change_music DJ>>
+        <<play_dialogue Ghost>>
+        Ghost: Now… get people dancing.
+        <<set $vinyl_playing = true>>
+        <<stop>>
+<<endif>>
+
+<<if $vinyl_playing == true && $cat_goblin_dancing == false>>
+    <<play_dialogue Ghost>>
+    Ghost: Didn't Goblin want to dance with Cat?
+<<endif>>
+
+<<if $cat_goblin_dancing == true && $know_brother_is_ghost == false>>
+    <<play_dialogue Ghost>>
+    Ghost: Finally! Took those two long enough to end up dancing! Go Goblin and Black Cat! 
+<<endif>>
+
+<<if $know_brother_is_ghost == true>>
+    <<play_dialogue Ghost>>
+    Ghost: Took you long enough! I was surprised you didn't recognize me, Neil-A, even with this mask on!
+    -> Al-X! Why didn't you just reveal yourself! And why did you make me chase you all the way here?!
+        <<play_dialogue Ghost>>
+        Ghost: You're too uptight all the time! And you can be rude and selfish! That's why I made you go through all this. Forced you to get out of your shell, make some friends, do things for other people! And look how well you did! I am… proud of you!
+        -> …what is this liquidy secretion dripping from my eye orifice?
+            <<play_dialogue Ghost>>
+            Ghost: Those are tears my brother.
+            -> *uncontrollable sobbing*
+                <<play_dialogue Ghost>>
+                Ghost: Okay… that's enough.
+                -> *Continues Sobbing*
+                    <<play_dialogue Ghost>>
+                    Ghost: Alright, seriously, get it together.
+                    -> Al-X, you have proven my errors to me. I will from now on be a changed Neil-A. Now we must return to our planet, our superiors await.
+                        <<play_dialogue Ghost>>
+                        Ghost: I bet they're not expecting us until morning… what if we stay and…
+                        <<play_dialogue Ghost>>
+                        Ghost: (Together) PARTY HALLOWEEN STYLE!
+                        <<set $found_brother = true>>
+                        <<change_scene fin>>
+<<endif>>
+
+===

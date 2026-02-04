@@ -1,0 +1,49 @@
+﻿title: Pumpkin
+---
+
+<<if $talked_to_pumpkin == false>>
+<<play_dialogue Pumpkin>>
+Pumpkin: Hey, Max! I thought you said weren't coming! Whoa that's a WAY more realistic Alien costume than the one you showed me, I almost didn't recognize you.
+-> Yes… of course, I am human Max. I mean, just regular Max. I am looking for my brother.
+    <<play_dialogue Pumpkin>>
+    Pumpkin: Oh, I don't know who your brother is and party rules is “no taking off your costumes”! Bad luck on halloween! But if you get me the GUEST LIST, maybe I can help you find out which one your brother is.
+    <<play_dialogue Pumpkin>>
+    Pumpkin: I think I gave it to either GOBLIN or the DJ GHOST. Go check with them.
+    <<set $talked_to_pumpkin = true>>
+    <<stop>>
+-> Perfect!
+    <<play_dialogue Pumpkin>>
+    Pumpkin: Whatever you need, just ask!
+    <<set $talked_to_pumpkin = true>>
+    <<stop>>
+<<endif>>
+
+<<if $talked_to_pumpkin == true && $has_guest_list == false>>
+    <<play_dialogue Pumpkin>>
+    Pumpkin: Hey have you found that guest list yet?
+    <<play_dialogue Pumpkin>>
+    Pumpkin: You can ask GOBLIN or DJ GHOST.
+<<endif>>
+
+<<if $has_guest_list == true && $know_brother_is_ghost == false>>
+    <<play_dialogue Pumpkin>>
+    Pumpkin: Hey! You got that guest list. That took you a while?
+    -> Yeah, I had to talk to everyone. Made a lot of new friends…
+        <<play_dialogue Pumpkin>>
+        Pumpkin: That's great buddy! That's what these parties are for! Okay lets see, what's your brothers name?
+        -> Their name is Al-X.
+        <<play_dialogue Pumpkin>>
+        Pumpkin: Oh… you mean Alex?
+            -> …Al-X.
+            <<play_dialogue Pumpkin>>
+            Pumpkin: Well… sounds kinda like Alex. I think DJ Ghost name is Alex.
+            <<set $know_brother_is_ghost = true>>
+            <<stop>>
+<<endif>>
+
+<<if $know_brother_is_ghost == true>>
+    <<play_dialogue Pumpkin>>
+    Pumpkin: Have you talked to Alex yet?
+<<endif>>
+
+===

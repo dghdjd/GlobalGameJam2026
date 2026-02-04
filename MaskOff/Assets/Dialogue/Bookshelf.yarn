@@ -1,0 +1,10 @@
+﻿title: Bookshelf
+---
+<<if $knows_vinyl_location == true && $has_vinyl_record == false>>
+    Bookshelf: There is a VINYL RECORD hidden inside one of the big books... (Picked up VINYL RECORD)
+    <<set $has_vinyl_record = true>>
+    <<stop>>
+<<else>>
+    Bookshelf: It would be interesting to learn about humans... but now I need to search for my brother.
+<<endif>>
+===
